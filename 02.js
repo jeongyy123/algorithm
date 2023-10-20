@@ -1,3 +1,4 @@
+//while은 시간이 오래걸린다.
 // function solution(arr) {
 //     var answer = 0;
 //     var i = 0;
@@ -7,12 +8,17 @@
 //     return answer;
 // }
 
+// function solution(arr) {
+//     var answer = 0;
+//     for (var i=0; i < arr.length; i++) {
+//         answer += arr[i];
+//     }
+//     return answer/arr.length;
+// }
+
+//use reduce
 function solution(arr) {
-    var answer = 0;
-    for (var i=0; i < arr.length; i++) {
-        answer += arr[i];
-    }
-    return answer/arr.length;
+    return arr.reduce((acc, cur) => acc + cur)
 }
 
 var arr1 = [1, 2, 3, 4];
