@@ -19,20 +19,20 @@
 // }
 // function solution(a, b, n) {
 //     //바꾼 콜라의 갯수 changeCola
-//     //회당 바꿀 콜라의 갯수 : originCola = n-(n%(b/a))
-//     //바꾼 콜라의 갯수 : changeCola = originCola / a => 누계(count)를 구하면 됨 countCola += changeCola
-//     //바꾸고 남은 콜라의 갯수(다음회의 n) : n - (바꿀 콜라의 갯수) + (바꾼 콜라의 갯수) : n2 = n - originCola + changeCola 
+//     //회당 바꿀 콜라의 갯수 : emptyCola = n-(n%(b/a))
+//     //바꾼 콜라의 갯수 : changeCola = emptyCola / a => 누계(count)를 구하면 됨 countCola += changeCola
+//     //바꾸고 남은 콜라의 갯수(다음회의 n) : n - (바꿀 콜라의 갯수) + (바꾼 콜라의 갯수) : n2 = n - emptyCola + changeCola 
 //     //1회: n = n
 //     //2회~마지막회: n = n - (바꿀 콜라의 갯수) + (바꾼 콜라의 갯수)
 //     let countCola = 0;
 //     while (n >= a) {
-//         let originCola = (n - (n % a)); //5-(5%2))
-//         let changeCola = Math.floor(originCola * (b/a));
+//         let emptyCola = (n - (n % a)); //5-(5%2))
+//         let changeCola = Math.floor(emptyCola / a) * b;
 //         countCola += changeCola;
-//         n = n - originCola + changeCola //5-5+2
+//         n = n - emptyCola + changeCola //5-5+2
 //         let remainCola = n;
 //         console.log("------------------------------")
-//         console.log(`originCola : ${originCola}`)
+//         console.log(`emptyCola : ${emptyCola}`)
 //         console.log(`changeCola : ${changeCola}`)
 //         console.log(`countCola(반복문) : ${countCola}`)
 //         console.log(`n : ${n}`)
@@ -46,10 +46,10 @@
 function solution(a, b, n) {
     let countCola = 0;
     while (n >= a) {
-        let originCola = (n - (n % a)); 
-        let changeCola = Math.floor(originCola * (b/a));
+        let emptyCola = (n - (n % a)); 
+        let changeCola = Math.floor(emptyCola / a) * b;
         countCola += changeCola;
-        n = n - originCola + changeCola 
+        n = n - emptyCola + changeCola 
     }
     return countCola;
 }
@@ -57,12 +57,20 @@ function solution(a, b, n) {
 
 const a1 = 3;
 const a2 = 3;
+const a3 = 9;
+const a4 = 6;
 
 const b1 = 2;
 const b2 = 1;
+const b3 = 2;
+const b4 = 3;
 
 const n1 = 10;
 const n2 = 20;
+const n3 = 21;
+const n4 = 23;
 
-console.log(solution(a1, b1, n1)); 
-console.log(solution(a2, b2, n2)); // 9
+console.log(solution(a1, b1, n1)); //16
+console.log(solution(a2, b2, n2)); //9
+console.log(solution(a3, b3, n3)); //4
+console.log(solution(a4, b4, n4)); //18
