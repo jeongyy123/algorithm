@@ -1,20 +1,14 @@
 function solution(arr) {
-  let answer = [];
-  let firstIdx = 0;
-  let secondIdx = 0;
-  let count = arr.filter(e => 2 === e).length;
-  if (count < 1) {
-    return [-1];
-  }
-  if (arr.indexOf(2) || "0") {
-    firstIdx = arr.indexOf(2);
-    if ((arr.length - arr.indexOf(2) - 1) || "0") {
-      secondIdx = arr.length - arr.indexOf(2) - 1;
-    }
-  }
+  const firstIndex = arr.indexOf(2);
 
-  answer = arr.slice(Number(firstIdx), Number(secondIdx + 1))
-  return answer;
+  if (firstIndex === -1) return [-1];
+
+  const secondIndex = arr.lastIndexOf(2);
+
+  if (firstIndex === secondIndex) {
+    return [2];
+  }
+  return arr.slice(firstIndex, secondIndex + 1);
 }
 
 const arr1 = [1, 2, 1, 4, 5, 2, 9]
@@ -25,9 +19,15 @@ const arr5 = [2, 2, 3]
 
 // console.log(solution(arr1))
 // console.log(solution(arr2))
-// console.log(solution(arr3))
+console.log(solution(arr3))
 // console.log(solution(arr4))
-console.log(solution(arr5))
+// console.log(solution(arr5))
 
 
-// console.log(arr1.length - arr1.indexOf(2) - 1)
+//Others
+function solution(arr) {
+  const from = arr.indexOf(2)
+  const end = arr.lastIndexOf(2)
+
+  return from === -1 ? [-1] : arr.slice(from, end + 1)
+}
