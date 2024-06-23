@@ -8,3 +8,4 @@ function solution(num_list, n) {
 const num_list = [2, 1, 6]
 const n = 1
 console.log(solution(num_list, n))
+
