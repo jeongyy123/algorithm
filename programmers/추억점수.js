@@ -1,25 +1,21 @@
 function solution(name, yearning, photo) {
   let answer = [];
-  let grade = [];
-  const missGradeKeyToValue = new Map()
-  const missGradeValueToKey = new Map()
+  const missGrade = new Map()
 
   for (let i = 0; i < name.length; i++) {
-    missGradeKeyToValue.set(name[i], yearning[i])
-    missGradeValueToKey.set(yearning[i], name[i])
+    missGrade.set(name[i], yearning[i])
   }
 
   for (let i = 0; i < photo.length; i++) {
+    let grade = 0;
     for (let j = 0; j < photo[i].length; j++) {
-      if (missGradeKeyToValue.has(photo[i][j])) {
-        // 만약 값이 missGrade에 있다면 -> missGrade key에 맞는 값을 grade에 저장.
-        grade.push(missGradeKeyToValue.get(photo[i][j]))
+      if (missGrade.has(photo[i][j])) {
+        grade += missGrade.get(photo[i][j])
       }
     }
-
+    answer.push(grade)
   }
 
-  console.log('grade', grade)
   return answer
 }
 
@@ -37,5 +33,11 @@ const photo3 = [["may"], ["kein", "deny", "may"], ["kon", "coni"]]
 
 
 console.log(solution(name1, yearning1, photo1))
-// console.log(solution(name2, yearning2, photo2))
-// console.log(solution(name3, yearning3, photo3))
+console.log(solution(name2, yearning2, photo2))
+console.log(solution(name3, yearning3, photo3))
+
+//Others
+function solution(name, yearning, photo) {
+  return photo.map((v) => v.reduce((a, c) => a += yearning[name.indexOf(c)] ?? 0, 0))
+}
+// ?? nullish coalescing opterator
