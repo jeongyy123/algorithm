@@ -1,11 +1,10 @@
 function solution(my_string, s, e) {
-  const my_stringArr = my_string.split(my_string.slice(s, e + 1))
-  const slicedStr = my_string.slice(s, e + 1)
-  const reveredArr = slicedStr.split("").reverse()
-  console.log(reveredArr)
-  const reveredStr = reveredArr.join("")
-  const answer = my_stringArr.splice(s, 0, reveredStr)
-  return answer.join("")
+  const arr = my_string.split('')
+  const reversedArr = arr.slice(s, e + 1).reverse();
+
+  arr.splice(s, reversedArr.length, ...reversedArr)
+
+  return arr.join('')
 }
 
 const my_string = "Progra21Sremm3"

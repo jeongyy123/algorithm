@@ -1,0 +1,7 @@
+function solution(order) {
+  return String(order).split(/[369]/g).length - 1
+}
+
+const order = 29423;
+
+console.log(solution(order))

@@ -1,18 +1,12 @@
 function solution(my_string, alp) {
-    let answer = [];
-    for (const idx in my_string) {
-        if (my_string[idx] === alp) {
-            answer.push(Number(idx));
-        }
-    }
-    if (answer.length !== 0) {
-        for (let i = 0; i < answer.length; i++) {
-            my_string = my_string[answer[i]].toUpperCase();
-        }
-        return my_string
-    }
+
+    return my_string.split('').map(val => val === alp ? val = val.toUpperCase() : val).join('')
+
 }
 const my_string = "programmers"
 const alp = "p"
 
 console.log(solution(my_string, alp))
+
+//Others
+const solution = (s, a) => s.replaceAll(a, a.toUpperCase())
