@@ -1,30 +1,30 @@
 function solution(keyinput, board) {
-  let location = [0, 0]
-  console.log('(Math.abs(location[0])', (Math.abs(location[0])))
-  console.log('Math.floor(board[0] / 2)', Math.floor(board[0] / 2))
-  console.log('(Math.abs(location[1])', (Math.abs(location[1])))
-  console.log('Math.floor(board[1] / 2)', Math.floor(board[1] / 2))
+  let location = [0, 0];
+  const xLimit = Math.floor(board[0] / 2);
+  const yLimit = Math.floor(board[1] / 2);
 
   for (let key of keyinput) {
-    if (Math.abs(location[0]) <= Math.floor(board[0] / 2) && Math.abs(location[1]) <= Math.floor(board[1] / 2)) {
-      switch (key) {
-        case "left":
+    switch (key) {
+      case "left":
+        if (location[0] > -xLimit) {
           location[0] -= 1;
-          break;
-        case "right":
+        }
+        break;
+      case "right":
+        if (location[0] < xLimit) {
           location[0] += 1;
-          break;
-        case "up":
+        }
+        break;
+      case "up":
+        if (location[1] < yLimit) {
           location[1] += 1;
-          break;
-        case "down":
+        }
+        break;
+      case "down":
+        if (location[1] > -yLimit) {
           location[1] -= 1;
-          break;
-      }
-      console.log('location1', location)
-    } else {
-      Math.abs(location[0]) > Math.floor(board[0] / 2) ? location[0] = Math.floor(board[0] / 2) * (location[0] / Math.abs(location[0])) : location[1] = Math.floor(board[1] / 2) * (location[1] / Math.abs(location[1]))
-      console.log('location2', location)
+        }
+        break;
     }
   }
   return location;
