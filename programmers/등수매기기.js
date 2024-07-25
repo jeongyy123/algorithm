@@ -1,13 +1,21 @@
 function solution(score) {
-  let answer = [];
+  let avg = [];
+  let lank = [];
 
   for (let i = 0; i < score.length; i++) {
-    answer.push(score[i].reduce((a, c) => a + c, 0) / 2)
+    avg.push(score[i].reduce((a, c) => a + c, 0) / 2)
   }
-  for (let i = 1; i < answer.length + 1; i++) {
-    answer[answer.indexOf(Math.max(...answer))] = i;
+
+  for (let i = 1; i < avg.length + 1; i++) {
+    if (avg.sort((a, b) => b - a)[i - 1] === avg.sort((a, b) => b - a)[i]) {
+      lank[i], lank[i] = i
+    }
   }
-  return answer;
+
+  // for (let i = 1; i < avg.length + 1; i++) {
+  //   avg[avg.indexOf(Math.max(...avg))] = i;
+  // }
+  return lank;
 }
 
 const score1 = [[80, 70], [90, 50], [40, 70], [50, 80]]
