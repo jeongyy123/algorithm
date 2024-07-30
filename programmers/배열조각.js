@@ -1,11 +1,14 @@
 function solution(arr, query) {
-  for (const idx of query) {
-    if (idx % 2 === 0) {
-      arr = arr.slice(0, idx + 1)
-    } else {
-      arr = arr.slice(idx)
-    }
-  }
+  // for (let i = 0; i < query.length; i++) {
+  //   if (i % 2 === 0) {
+  //     arr = arr.slice(0, query[i] + 1)
+  //   } else {
+  //     arr = arr.slice(query[i])
+  //   }
+  // }
+
+  query.map((v, i) => i % 2 === 0 ? arr = arr.slice(0, query[i] + 1) : arr = arr.slice(query[i]))
+
   return arr;
 }
 
